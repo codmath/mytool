@@ -39,7 +39,6 @@ private TransferRepo transferRepo;
         }
         else if(transactionType.equals("withdraw")||transactionType.equals("transfer")){
             //accountBalance kam ho jayega 
-            // List<BeneficiaryPeople> existingBeneficiaryPeople=receivingRepo.findAll();
             double existingBalance=person.getAccountBalance();
             if(existingBalance>=moneyTransaction.getTransactionAmount()){
             double newBalance=existingBalance-moneyTransaction.getTransactionAmount();
@@ -56,6 +55,7 @@ private TransferRepo transferRepo;
             System.out.println("se yaha tak");
             transfer.setTotalTransferMoney(moneyTransaction.getTransactionAmount());
             transfer.setTransferMode("UPI");
+            transfer.setPersonId(requestId);
             transferRepo.save(transfer);
             }
             }
@@ -65,6 +65,7 @@ private TransferRepo transferRepo;
         }
 
         this.moneyTransactionRepo.save(moneyTransaction);
+        
         return "tranasction uploaded in my Db";
     
     }
