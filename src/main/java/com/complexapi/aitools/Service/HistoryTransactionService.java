@@ -1,5 +1,7 @@
 package com.complexapi.aitools.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +46,20 @@ public class HistoryTransactionService {
         historyTransactionRepo.save(historyTransaction);
     
         return historyTransaction;
+    }
+
+
+    public String getAllHistoryTrxn() {
+        List<Double> existingAmountDeposit=historyTransactionRepo.findAccountMoney(2);
+        int n =existingAmountDeposit.size();
+        double countMoney=0.0;
+
+        for(int i=0; i<n; i++){
+            countMoney+=existingAmountDeposit.get(i);
+            System.out.println(countMoney);
+
+        }
+        return "sum of money is fetched correctlty";
     }
 
     

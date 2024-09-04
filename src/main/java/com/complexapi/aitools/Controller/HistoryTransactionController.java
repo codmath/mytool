@@ -23,6 +23,13 @@ public class HistoryTransactionController {
     public ResponseEntity<HistoryTransaction> getHistory(@PathVariable Long personId){
         return ResponseEntity.ok(historyTranasactionService.todohistory(personId));
     }
+    @GetMapping("/getHistoryTransaction")
+    public ResponseEntity<String> getMethodName() {
+        return ResponseEntity.ok(historyTranasactionService.getAllHistoryTrxn());
+
+        
+    }
+    
    
 
 }

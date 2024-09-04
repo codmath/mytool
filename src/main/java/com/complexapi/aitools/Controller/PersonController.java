@@ -26,6 +26,11 @@ public class PersonController {
     public ResponseEntity<Double> getBalance(@PathVariable Long personId){
         return ResponseEntity.ok(personService.findBalanace(personId));
     }
+    @GetMapping("/getAll")
+    public ResponseEntity<String> getAllData(){
+        return ResponseEntity.ok(personService.findAll());
+    }
+
 
 
 

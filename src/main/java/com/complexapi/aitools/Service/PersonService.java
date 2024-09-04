@@ -1,5 +1,7 @@
 package com.complexapi.aitools.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +21,23 @@ public String addPersonData(Person person) {
 
 public Double findBalanace(Long personId) {
     Person person=personRepo.findById(personId).orElse(null);
+    List<String> existingNames=personRepo.findNamesFromPerson(8000.78);
+    int n=existingNames.size();
+    for(int i=0; i<n; i++){
+        System.out.println(existingNames.get(i));
+    }
+    
     return person.getAccountBalance();
 
+}
+
+public String  findAll() {
+    List<String> existingNames=personRepo.findNamesFromPerson(8000.78);
+    int n=existingNames.size();
+    for(int i=0; i<n; i++){
+        System.out.println(existingNames.get(i));
+    }
+    return "Successfully Retrived";
 }
 
 }

@@ -1,5 +1,7 @@
 package com.complexapi.aitools.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,16 @@ public class AccountService {
         this.accountRepo.save(account);
         System.out.println("the name of person is" + person.getName() + "he has amount of" + person.getAccountBalance());
         return "Account details updated Successfully";
+    }
+
+    public String fetchAccountDetails() {
+        List<String> existingAccountNumber=accountRepo.findAccountNumber("SBI", "Barharia");
+        int n =existingAccountNumber.size();
+        for(int i=0; i<n; i++){
+            System.out.println(existingAccountNumber.get(i));
+        }
+        return "successfuly able to retrive from DB ";
+       
     }
 
 }
