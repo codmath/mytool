@@ -69,6 +69,16 @@ private TransferRepo transferRepo;
         return "tranasction uploaded in my Db";
     
     }
+    public String getAllDepositAmount() {
+        List<Double> existingDepositAmount=moneyTransactionRepo.findDepositMoney("deposit", (long) 1);
+        int n=existingDepositAmount.size();
+        double totalDepositAmount=0.0;
+        for(int i=0; i<n; i++){
+            totalDepositAmount+=existingDepositAmount.get(i);
+            System.out.println(totalDepositAmount);
+        }
+        return "deposit amount by specific person is successfully fetched";
+    }
 
 
 }

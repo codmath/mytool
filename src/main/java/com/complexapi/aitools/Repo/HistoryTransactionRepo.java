@@ -11,6 +11,7 @@ import com.complexapi.aitools.Entity.HistoryTransaction;
 public interface  HistoryTransactionRepo extends JpaRepository<HistoryTransaction, Long> {
     @Query(value="SELECT h.totalAmountDeposit FROM HistoryTransaction h WHERE h.countAmountDeposit = :countDeposit")
     List<Double> findAccountMoney(int countDeposit);
+   
 
 
 }
