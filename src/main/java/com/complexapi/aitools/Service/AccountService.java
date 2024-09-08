@@ -36,4 +36,14 @@ public class AccountService {
        
     }
 
+    public String  fetchSpecificAccountDetails(Long personId) {
+        List<String> existingAccountNumber=accountRepo.findAccountNumberSpecific("ICICI", "GKP", personId);
+        int n=existingAccountNumber.size();
+        System.out.println(n);
+        for(int i=0; i<n; i++){
+            System.out.println(existingAccountNumber.get(i));
+        }
+        return "specific fetched data successfully";
+    }
+
 }

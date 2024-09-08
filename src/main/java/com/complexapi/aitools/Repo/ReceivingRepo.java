@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.complexapi.aitools.Entity.BeneficiaryPeople;
 @Repository
 public interface ReceivingRepo extends JpaRepository<BeneficiaryPeople, Long> {
-
     
 } 
