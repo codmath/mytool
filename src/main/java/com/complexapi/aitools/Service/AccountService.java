@@ -1,6 +1,7 @@
 package com.complexapi.aitools.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
@@ -44,6 +45,29 @@ public class AccountService {
             System.out.println(existingAccountNumber.get(i));
         }
         return "specific fetched data successfully";
+    }
+
+    public String updateDetails(Account account, Long personId) {
+     Optional<Account> existingAccount=accountRepo.findAccountByPersonId(personId);
+      if(existingAccount.isPresent()){
+        Account updatedAccount=existingAccount.get();
+        updatedAccount.setAccountNumber(account.getAccountNumber());
+        updatedAccount.setBankName(account.getBankName());
+        updatedAccount.setBranchName(account.getBranchName());
+        accountRepo.save(updatedAccount);
+        
+      }
+
+
+        return "account nuber updated Successfully";
+    }
+
+    public String deleteData(Long accountId){
+        Optional<Account> existingAccount=accountRepo.findById(accountId);
+        if(existingAccount.isPresent()){
+            accountRepo.deleteById(accountId);
+        }
+        return "deleted Successfully";
     }
 
 }
